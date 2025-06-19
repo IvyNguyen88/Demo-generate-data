@@ -1,0 +1,9 @@
+login:Login with invalid password
+login:Login with expired token
+login:Login with empty email
+login:Login with valid credentials
+Login:Navigate to login page -> Enter email -> Enter password -> Click login -> See error message
+Login: navigate to login -> click login button -> see error message
+login:User enters invalid email format
+profile:Show correct information
+profile: User updates profile successfully -> Navigate to profile -> Update name -> Click save -> See success message

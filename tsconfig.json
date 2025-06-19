@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+      "target": "es6",
+      "module": "commonjs",
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true,
+      "lib": [
+          "es2021", "es6", "dom", "ESNext.Object"
+      ],
+      "typeRoots": [
+          "./node_modules/@types",
+          "src/helpers/web/types"
+      ],
+      "resolveJsonModule": true,
+      "types": ["jest", "node"],
+      "baseUrl": "./src",
+      "paths": {
+          "api/*": ["api/*"]
+      }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}

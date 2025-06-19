@@ -1,0 +1,25 @@
+{
+  "name": "agent-ai-faker",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+"scripts": {
+  "generate": "node ./bin/cli.js",
+  "test": "echo \"Error: no test specified\" && exit 1"
+},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@faker-js/faker": "^9.8.0",
+    "agent-ai-faker": "^0.0.7",
+    "faker": "^5.5.3",
+    "json2csv": "^6.0.0-alpha.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "description": ""
+}
