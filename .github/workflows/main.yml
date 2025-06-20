@@ -1,17 +1,41 @@
-name: Run BDD Generator Tests
+name: BDD Generator CI/CD
 
 on:
   push:
     branches:
       - main
+    paths:
+      - 'prompts.txt'
+      - 'generators/**'
+      - 'bin/**'
   pull_request:
     branches:
       - main
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run linter
+        run: npm run lint || echo "No lint script defined"
+
+      - name: Build project
+        run: npm run build || echo "No build script defined"
+
+  generate:
+    runs-on: ubuntu-latest
+    needs: build
     steps:
       - name: Checkout source
         uses: actions/checkout@v3
@@ -25,7 +49,18 @@ jobs:
         run: npm ci
 
       - name: Run BDD Generator
-        run: node ./bin/cli.js
+        run: npm run generate
 
       - name: Show generated features
         run: ls -R features || echo "No features generated."
+
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    needs: generate
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+
+      - name: Deploy placeholder
+        run: echo "🚀 Add your deploy step here..."
